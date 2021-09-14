@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Alta Usuarios" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:outputLabel value="Tipo de usuario:" />
+			<p:selectOneMenu value="#{gestionUsuario.tipoUsuario}">
+				<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+				<f:selectItem itemValue="Experto" itemLabel="Experto" />
+				<f:selectItem itemValue="Comun" itemLabel="Común" />
+			</p:selectOneMenu>
+			<h:commandButton id="Cargar" value="Cargar"
+				action="altaUsuario?faces-redirect=true" />
+		</h:form>
+		<br />
+		<h:form rendered="#{gestionUsuario.cargarFormAdm()}">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{gestionUsuario.adm.nombre}" required="true" label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{gestionUsuario.adm.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Nombre Usuario:" />
+				<p:inputText id="nombUsuario" name="nombUsuario"
+					value="#{gestionUsuario.adm.nombUsuario}" required="true"
+					label="NombreUsuario" />
+				<p:message for="nombUsuario" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{gestionUsuario.adm.email}" required="true" label="Email"
+					validatorMessage="El Email es invalido.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
+				</p:inputText>
+				<p:message for="email" style="color:red" />
+
+				<p:outputLabel value="Contraseña" />
+				<p:password id="contrasenia" name="contrasenia" label="contrasenia"
+					value="#{gestionUsuario.adm.contraseña}" />
+				<p:message for="contrasenia" style="color:red" />
+
+				<p:outputLabel value="CI:" />
+				<p:inputText id="ci" name="ci" value="#{gestionUsuario.adm.cedula}"
+					required="true" label="ci" />
+				<p:message for="ci" style="color:red" />
+
+				<p:outputLabel value="Instituto" />
+				<p:inputText id="instituto" name="instituto"
+					value="#{gestionUsuario.adm.instituto}" required="true"
+					label="instituto" />
+				<p:message for="instituto" style="color:red" />
+
+			</p:panelGrid>
+
+			<h:commandButton id="agregar" value="Agregar"
+				action="#{gestionUsuario.crearAdm()}" />
+		</h:form>
+
+		<h:form rendered="#{gestionUsuario.cargarFormCom()}">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{gestionUsuario.com.nombre}" required="true" label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{gestionUsuario.com.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Nombre Usuario:" />
+				<p:inputText id="nombUsuario" name="nombUsuario"
+					value="#{gestionUsuario.com.nombUsuario}" required="true"
+					label="NombreUsuario" />
+				<p:message for="nombUsuario" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{gestionUsuario.com.email}" required="true" label="Email"
+					validatorMessage="El Email es invalido.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
+				</p:inputText>
+				<p:message for="email" style="color:red" />
+
+				<p:outputLabel value="Contraseña" />
+				<p:password id="contrasenia" name="contrasenia"
+					value="#{gestionUsuario.com.contraseña}" required="true"
+					label="contrasenia" />
+				<p:message for="contrasenia" style="color:red" />
+
+				<h:commandButton id="agregar" value="Agregar"
+					action="#{gestionUsuario.crearCom()}" />
+			</p:panelGrid>
+		</h:form>
+
+		<h:form rendered="#{gestionUsuario.cargarFormExp()}">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{gestionUsuario.exp.nombre}" required="true" label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{gestionUsuario.exp.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Nombre Usuario:" />
+				<p:inputText id="nombUsuario" name="nombUsuario"
+					value="#{gestionUsuario.exp.nombUsuario}" required="true"
+					label="NombreUsuario" />
+				<p:message for="nombUsuario" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{gestionUsuario.exp.email}" required="true" label="Email"
+					validatorMessage="El Email es invalido.">
+					<f:validateRegex
+						pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
+				</p:inputText>
+				<p:message for="email" style="color:red" />
+
+				<p:outputLabel value="Contraseña" />
+				<p:password id="contrasenia" name="contrasenia"
+					value="#{gestionUsuario.exp.contraseña}" required="true"
+					label="contrasenia" />
+				<p:message for="contrasenia" style="color:red" />
+
+				<p:outputLabel value="CI:" />
+				<p:inputText id="ci" name="ci" value="#{gestionUsuario.exp.cedula}"
+					required="true" label="ci" />
+				<p:message for="ci" style="color:red" />
+
+				<p:outputLabel value="Profesion" />
+				<p:inputText id="profesion" name="profesion"
+					value="#{gestionUsuario.exp.profesion}" required="true"
+					label="instituto" />
+			</p:panelGrid>
+
+			<h:commandButton id="agregar" value="Agregar"
+				action="#{gestionUsuario.crearExp()}" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

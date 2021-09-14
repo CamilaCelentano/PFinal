@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Alta Formulario" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="3">
+			<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{crearFormulario.formulario.nombre}" label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Resumen:" />
+				<p:inputText id="resumen" name="resumen"
+					value="#{crearFormulario.formulario.resumen}"
+					label="Resumen" />
+				<p:message for="resumen" style="color:red" />
+				</p:panelGrid>
+			<h:commandButton id="crear" value="Crear"
+				action="#{crearFormulario.crearFormulario()}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
