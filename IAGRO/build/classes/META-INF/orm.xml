@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+	<persistence-unit-metadata>
+		<persistence-unit-defaults>
+			<access>FIELD</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+<entity class="com.entities.UnidadMedida" access="FIELD">
+		<table name="UNIDAD_MEDIDA">
+		</table>
+	</entity>
+		<entity class="com.entities.Formulario" access="FIELD">
+			<table name="FORMULARIOS">
+			</table>
+		</entity>
+		<entity class="com.entities.MetodoMuestreo" access="FIELD">
+			<table name="MET_MUESTREO">
+			</table>
+		</entity>
+		<entity class="com.entities.TipoMuestreo" access="FIELD">
+			<table name="TIPO_MUESTREO">
+			</table>
+		</entity>
+		<entity class="com.entities.EstacionMuestreo" access="FIELD">
+			<table name="EST_MUESTREO">
+			</table>
+		</entity>
+		<entity class="com.entities.Departamento" access="FIELD">
+			<table name="DEPARTAMENTO">
+			</table>
+		</entity>
+		<entity class="com.entities.Zonas" access="FIELD">
+			<table name="ZONAS">
+			</table>
+		</entity>
+		<entity class="com.entities.Localidad" access="FIELD">
+			<table name="LOCALIDAD">
+			</table>
+		</entity>
+		<entity class="com.entities.Geopunto" access="FIELD">
+			<table name="GEOPUNTOS">
+			</table>
+		</entity>
+		<entity class="com.entities.ActividadCampo" access="FIELD">
+			<table name="ACTIVIDADES_CAMPO">
+			</table>
+		</entity>
+		<entity class="com.entities.Usuario" access="FIELD">
+			<table name="USUARIOS">
+			</table>
+		</entity>
+		<entity class="com.entities.Tarea" access="FIELD">
+			<table name="TAREAS">
+			</table>
+		</entity>
+		<entity class="com.entities.Experto" access="FIELD">
+			<table name="EXPERTOS">
+			</table>
+		</entity>
+		<entity class="com.entities.Administrador" access="FIELD">
+			<table name="ADMINISTRADORES">
+			</table>
+		</entity>
+		<entity class="com.entities.Comun" access="FIELD">
+			<table name="COMUNES">
+			</table>
+		</entity>
+		<entity class="com.entities.Casilla" access="FIELD">
+			<table name="CASILLAS">
+			</table>
+		</entity>
+		<entity class="com.entities.RespuestaCasilla" access="FIELD">
+			<table name="RESPUESTACASILLAS">
+			</table>
+		</entity>
+</entity-mappings>
