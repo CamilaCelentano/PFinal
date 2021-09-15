@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Modificacion Usuarios" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<p:outputLabel value="Tipo de usuario: " />
+		<p:outputLabel value="#{modificarUsuario.tipoUsuario}" />
+		<br />
+		<h:form rendered="#{modificarUsuario.cargarFormAdm()}">
+
+			<p:panelGrid columns="3">
+
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{modificarUsuario.adm.nombre}" required="true"
+					label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{modificarUsuario.adm.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{modificarUsuario.adm.email}" required="true" label="Email" />
+				<p:message for="email" style="color:red" />
+
+				<p:outputLabel value="CI:" />
+				<p:inputText id="ci" name="ci"
+					value="#{modificarUsuario.adm.cedula}" required="true" label="ci" />
+				<p:message for="ci" style="color:red" />
+
+				<p:outputLabel value="Instituto" />
+				<p:inputText id="instituto" name="instituto"
+					value="#{modificarUsuario.adm.instituto}" required="true"
+					label="instituto" />
+				<p:message for="instituto" style="color:red" />
+
+			</p:panelGrid>
+
+			<h:commandButton id="agregar" value="Agregar"
+				action="#{modificarUsuario.modificarAdm()}" />
+		</h:form>
+
+		<h:form rendered="#{modificarUsuario.cargarFormCom()}">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{modificarUsuario.com.nombre}" required="true"
+					label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{modificarUsuario.com.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{modificarUsuario.com.email}" required="true" label="Email" />
+				<p:message for="email" style="color:red" />
+
+				<h:commandButton id="agregar" value="Agregar"
+					action="#{modificarUsuario.modificarCom()}" />
+			</p:panelGrid>
+		</h:form>
+
+		<h:form rendered="#{modificarUsuario.cargarFormExp()}">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{modificarUsuario.exp.nombre}" required="true"
+					label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+
+				<p:outputLabel value="Apellido:" />
+				<p:inputText id="apellido" name="apellido"
+					value="#{modificarUsuario.exp.apellido}" required="true"
+					label="Apellido" />
+				<p:message for="apellido" style="color:red" />
+
+				<p:outputLabel value="Email:" />
+				<p:inputText id="email" name="email"
+					value="#{modificarUsuario.exp.email}" required="true" label="Email" />
+				<p:message for="email" style="color:red" />
+
+				<p:outputLabel value="CI:" />
+				<p:inputText id="ci" name="ci"
+					value="#{modificarUsuario.exp.cedula}" required="true" label="ci" />
+				<p:message for="ci" style="color:red" />
+
+				<p:outputLabel value="Profesion" />
+				<p:inputText id="profesion" name="profesion"
+					value="#{modificarUsuario.exp.profesion}" required="true"
+					label="instituto" />
+			</p:panelGrid>
+
+			<h:commandButton id="agregar" value="Agregar"
+				action="#{modificarUsuario.modificarExp()}" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
