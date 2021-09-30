@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Alta Casilla" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="5">
+			<p:outputLabel value="Parámetro:" />
+				<p:inputText id="parametro" name="parametro"
+					value="#{crearCasilla.casilla.parametro}" label="Parametro" />
+				<p:message for="parametro" style="color:red" />
+
+				<p:outputLabel value="Descripción:" />
+				<p:inputText id="descripcion" name="descripcion"
+					value="#{crearCasilla.casilla.descripcion}"
+					label="Descripcion" />
+				<p:message for="descripcion" style="color:red" />
+				
+				<p:outputLabel value="Obligatorio:" />
+				<p:inputText id="obligatorio" name="obligatorio"
+					value="#{crearCasilla.casilla.obligatorio}"
+					label="Obligatorio" />
+				<p:message for="obligatorio" style="color:red" />
+				
+<!-- 				<p:outputLabel value="Tipo de valor:" /> -->
+<!-- 				<p:selectOneMenu value="#{crearCasilla.tipovalor}"> -->
+<!-- 				<f:selectItem itemValue="#{crearCasilla.tipovalor.}" itemLabel="Administrador" /> -->
+<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
+<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
+<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
+<!-- 						</p:selectOneMenu> -->
+						
+				<p:outputLabel value="Unidad de Medida:" />
+				<p:selectOneMenu value="#{crearCasilla.mostrarUnidades()}">
+				<f:selectItem itemValue="#{crearCasilla.uniMedidaBean.buscarPorNombre('cm')}" itemLabel="Cm" />
+						</p:selectOneMenu>
+				</p:panelGrid>
+			<h:commandButton id="crear" value="Crear"
+				action="#{crearCasilla.crearCasilla()}" />
+		</h:form>
+	</ui:define>
+</ui:composition>

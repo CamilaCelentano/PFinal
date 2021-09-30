@@ -71,4 +71,14 @@ public class EstacionMuestreoDAO {
 		}
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("EstacionMuestreoDAO [em=");
+		builder.append(em);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+
 }

@@ -3,6 +3,7 @@ package com.servicios;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import com.daos.EstacionMuestreoDAO;
 import com.entities.EstacionMuestreo;
@@ -11,8 +12,9 @@ import com.exception.ServiciosException;
 /**
  * Session Bean implementation class EstacionMuestreoBean
  */
+@Local
 @Stateless
-public class EstacionMuestreoBean implements EstacionMuestreoBeanRemote {
+public class EstacionMuestreoBean{
 
     /**
      * Default constructor. 
@@ -23,22 +25,18 @@ public class EstacionMuestreoBean implements EstacionMuestreoBeanRemote {
     @EJB
 	EstacionMuestreoDAO estMuestreo;
 
-	@Override
 	public void crear(EstacionMuestreo m) throws ServiciosException {
 		estMuestreo.crear(m);
 	}
 
-	@Override
 	public void actualizar(EstacionMuestreo m) throws ServiciosException {
 		estMuestreo.actualizar(m);
 	}
 
-	@Override
 	public void borrar(Long id) throws ServiciosException {
 		estMuestreo.borrar(id);
 	}
 
-	@Override
 	public List<EstacionMuestreo> obtenerTodos() {
 		return estMuestreo.obtenerTodos();
 	}

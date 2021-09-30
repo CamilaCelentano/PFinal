@@ -47,4 +47,11 @@ public class Departamento implements Serializable {
 		return nombre;
 	}
 
+	public Departamento(Long idDepartamento, String nombre) {
+		super();
+		this.idDepartamento = idDepartamento;
+		this.nombre = nombre;
+	}
+	
+
 }

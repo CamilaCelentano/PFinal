@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition template="/layout/layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<c:set var="title" value="Carga de Actividad" scope="request" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="3">
+			<p:outputLabel value="Nombre:" />
+				<p:inputText id="nombre" name="nombre"
+					value="#{crearActividad.act.nombre}" required="true" label="Nombre" />
+				<p:message for="nombre" style="color:red" />
+				
+				<p:outputLabel value="Descripción:" />
+				<p:inputText id="descripcion" name="descripcion"
+					value="#{crearActividad.act.descripcion}" required="true" label="descripcion" />
+				<p:message for="descripcion" style="color:red" />
+				
+				<p:outputLabel value="Cantidad:" />
+				<p:inputText id="cantidad" name="cantidad"
+					value="#{crearActividad.act.cantidad}" required="true" label="cantidad" />
+				<p:message for="cantidad" style="color:red" />
+				
+				<p:outputLabel for="popup" value="Fecha:"/>
+                <p:calendar id="popup" value="#{crearActividad.act.fecha}"/>
+                </p:panelGrid>
+
+			<p:panelGrid columns="2">
+			
+			<p:outputLabel value="Departamento:" />
+			<p:selectOneMenu value="#{crearActividad.depDTO.idDepartamento}">
+                <f:selectItems value="#{crearActividad.listadep}" var = "c" itemLabel="#{c.nombre}" itemValue="#{c.idDepartamento}" />
+                <p:ajax event="change" update="@this"/>
+            </p:selectOneMenu>
+            
+            <p:outputLabel value="Método de Muestreo:" />
+			<p:selectOneMenu value="#{crearActividad.metM.nombre}">
+                <f:selectItems value="#{crearActividad.listadomet}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idMetodoMuestreo}"/>
+            </p:selectOneMenu>
+			
+			 <p:outputLabel value="Estación de Muestreo:" />
+			<p:selectOneMenu value="#{crearActividad.estM.nombre}">
+                <f:selectItems value="#{crearActividad.selectEst()}" />
+            </p:selectOneMenu>
+        
+			</p:panelGrid>
+			
+			<h:commandButton id="Cargar" value="Cargar"
+				action="#{crearActividad.crearActividad()}" />
+				
+			
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+		

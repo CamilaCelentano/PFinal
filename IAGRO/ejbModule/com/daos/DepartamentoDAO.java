@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import com.entities.Administrador;
 import com.entities.Departamento;
 import com.exception.ServiciosException;
 
@@ -64,6 +65,16 @@ public class DepartamentoDAO {
 		TypedQuery<Departamento> query = em
 				.createQuery("SELECT a FROM Departamento a WHERE a.nombre = :nom", Departamento.class)
 				.setParameter("nom", nom);
+		if (query.getResultList().size() == 1) {
+			return query.getResultList().get(0);
+		} else {
+			return null;
+		}
+	}
+	public Departamento buscarPorId(Long idDepartamento) {
+		TypedQuery<Departamento> query = em
+				.createQuery("SELECT a FROM Administrador a WHERE a.idDepartamento = :id", Departamento.class)
+				.setParameter("id", idDepartamento);
 		if (query.getResultList().size() == 1) {
 			return query.getResultList().get(0);
 		} else {

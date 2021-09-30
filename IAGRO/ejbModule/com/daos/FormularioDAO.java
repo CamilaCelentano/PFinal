@@ -23,7 +23,7 @@ public class FormularioDAO {
 	}
 
 	public void crear(Formulario f) throws ServiciosException {
-		if(buscar(f.getNombre()) == null) {
+		if(buscar(f.getnombre()) == null) {
 			try {
 				em.persist(f);
 				em.flush();
@@ -94,5 +94,7 @@ public class FormularioDAO {
 			throw new ServiciosException("No se pudo borrar la casilla.");
 		}
 	}
+	
+	
 
 }

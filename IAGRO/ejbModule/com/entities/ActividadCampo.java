@@ -43,7 +43,7 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private Formulario formulario;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<RespuestaCasilla> respuestas;
 
 	@ManyToOne
@@ -52,7 +52,7 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private EstacionMuestreo estacionMuestreo;
 
-	@ManyToOne(optional = true, cascade = CascadeType.ALL)
+	@ManyToOne(optional = true, cascade = CascadeType.MERGE)
 	private Geopunto geopunto;
 
 	@ManyToOne

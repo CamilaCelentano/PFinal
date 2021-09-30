@@ -3,6 +3,7 @@ package com.servicios;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import com.daos.CasillaDAO;
@@ -12,8 +13,9 @@ import com.exception.ServiciosException;
 /**
  * Session Bean implementation class CasillaBean
  */
+@Local
 @Stateless
-public class CasillaBean implements CasillaBeanRemote {
+public class CasillaBean {
 
 	@EJB
 	CasillaDAO casilla;
@@ -22,27 +24,22 @@ public class CasillaBean implements CasillaBeanRemote {
 
 	}
 
-	@Override
 	public void crear(Casilla c) throws ServiciosException {
 		casilla.crear(c);
 	}
 
-	@Override
 	public void actualizar(Casilla c) throws ServiciosException {
 		casilla.crear(c);
 	}
 
-	@Override
 	public void borrar(Long id) throws ServiciosException {
 		casilla.borrar(id);
 	}
 
-	@Override
 	public List<Casilla> obtenerTodos() {
 		return casilla.obtenerTodos();
 	}
 
-	@Override
 	public Casilla buscar(String nom) {
 		return casilla.buscar(nom);
 	}

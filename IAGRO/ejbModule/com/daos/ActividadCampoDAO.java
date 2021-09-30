@@ -26,6 +26,7 @@ public class ActividadCampoDAO {
 			em.persist(ac);
 			em.flush();
 		} catch (PersistenceException e) {
+			System.out.println(e.getMessage());
 			throw new ServiciosException("No se pudo crear la Actividad de Campo.");
 		}
 	}
