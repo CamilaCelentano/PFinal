@@ -44,8 +44,8 @@ public abstract class Usuario implements Serializable {
 	@Column
 	private boolean activo;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Tarea> tareas = new ArrayList<Tarea>();
+//	@OneToMany(fetch = FetchType.LAZY)
+//	private List<Tarea> tareas = new ArrayList<Tarea>();
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -95,13 +95,13 @@ public abstract class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Tarea> getTareas() {
-		return tareas;
-	}
-
-	public void setTareas(List<Tarea> tareas) {
-		this.tareas = tareas;
-	}
+//	public List<Tarea> getTareas() {
+//		return tareas;
+//	}
+//
+//	public void setTareas(List<Tarea> tareas) {
+//		this.tareas = tareas;
+//	}
 
 	public boolean isActivo() {
 		return activo;

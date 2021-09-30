@@ -3,14 +3,15 @@ package com.servicios;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import com.daos.ActividadCampoDAO;
 import com.entities.ActividadCampo;
 import com.exception.ServiciosException;
-
+@Local
 @Stateless
-public class ActividadCampoBean implements ActividadCampoBeanRemote {
+public class ActividadCampoBean{
 
 	public ActividadCampoBean() {
 	}
@@ -18,26 +19,27 @@ public class ActividadCampoBean implements ActividadCampoBeanRemote {
 	@EJB
 	ActividadCampoDAO actividadcampo;
 
-	@Override
+	
 	public void crear(ActividadCampo ac) throws ServiciosException {
 		actividadcampo.crear(ac);
 	}
 
-	@Override
+	
 	public void actualizar(ActividadCampo ac) throws ServiciosException {
 		actividadcampo.actualizar(ac);
 	}
 
-	@Override
+	
 	public void borrar(Long id) throws ServiciosException {
 		actividadcampo.borrar(id);
 	}
 
-	@Override
 	public List<ActividadCampo> obtenerTodos() {
 		return actividadcampo.obtenerTodos();
 	}
 
+
+	
 //	@Override
 //	public ActividadCampo buscarPorNombre(String nom) {
 //		return actividadcampo.buscarPorNombre(nom);

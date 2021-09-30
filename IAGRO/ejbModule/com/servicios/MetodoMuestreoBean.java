@@ -3,6 +3,7 @@ package com.servicios;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import com.daos.MetodoMuestreoDAO;
 import com.entities.MetodoMuestreo;
@@ -11,8 +12,9 @@ import com.exception.ServiciosException;
 /**
  * Session Bean implementation class MetodoMuestreoBean
  */
+@Local
 @Stateless
-public class MetodoMuestreoBean implements MetodoMuestreoBeanRemote {
+public class MetodoMuestreoBean{
 
     /**
      * Default constructor. 
@@ -23,22 +25,22 @@ public class MetodoMuestreoBean implements MetodoMuestreoBeanRemote {
     @EJB
    	MetodoMuestreoDAO metmuestreo;
 
-   	@Override
+ 
    	public void crear(MetodoMuestreo m) throws ServiciosException {
    		metmuestreo.crear(m);
    	}
 
-   	@Override
+   	
    	public void actualizar(MetodoMuestreo m) throws ServiciosException {
    		metmuestreo.actualizar(m);
    	}
 
-   	@Override
+   	
    	public void borrar(Long id) throws ServiciosException {
    		metmuestreo.borrar(id);
    	}
 
-   	@Override
+   	
    	public List<MetodoMuestreo> obtenerTodos() {
    		return metmuestreo.obtenerTodos();
    	}

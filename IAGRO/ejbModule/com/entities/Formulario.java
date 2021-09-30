@@ -21,12 +21,12 @@ public class Formulario implements Serializable {
 	@SequenceGenerator(name = "FORMULARIOS_SEQ", sequenceName = "FORMULARIOS_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FORMULARIOS_SEQ")
 	private Long idFormulario;
+	
+	@Column(length = 50, nullable = false, unique = true)
+	private String nombre;
 
 	@Column(length = 100)
 	private String resumen;
-
-	@Column(length = 50, nullable = false, unique = true)
-	private String nombre;
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Casilla> casilla = new ArrayList<>();
@@ -51,11 +51,11 @@ public class Formulario implements Serializable {
 		this.resumen = resumen;
 	}
 
-	public String getNombre() {
+	public String getnombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setnombre(String nombre) {
 		this.nombre = nombre;
 	}
 

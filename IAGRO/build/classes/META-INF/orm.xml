@@ -45,12 +45,20 @@
 			<table name="ACTIVIDADES_CAMPO">
 			</table>
 		</entity>
-		<entity class="com.entities.Usuario" access="FIELD">
-			<table name="USUARIOS">
-			</table>
-		</entity>
 		<entity class="com.entities.Tarea" access="FIELD">
 			<table name="TAREAS">
+			</table>
+		</entity>
+		<entity class="com.entities.Casilla" access="FIELD">
+			<table name="CASILLAS">
+			</table>
+		</entity>
+		<entity class="com.entities.RespuestaCasilla" access="FIELD">
+			<table name="RESPUESTACASILLAS">
+			</table>
+		</entity>
+		<entity class="com.entities.Usuario" access="FIELD">
+			<table name="USUARIOS">
 			</table>
 		</entity>
 		<entity class="com.entities.Experto" access="FIELD">
@@ -63,14 +71,6 @@
 		</entity>
 		<entity class="com.entities.Comun" access="FIELD">
 			<table name="COMUNES">
-			</table>
-		</entity>
-		<entity class="com.entities.Casilla" access="FIELD">
-			<table name="CASILLAS">
-			</table>
-		</entity>
-		<entity class="com.entities.RespuestaCasilla" access="FIELD">
-			<table name="RESPUESTACASILLAS">
 			</table>
 		</entity>
 </entity-mappings>

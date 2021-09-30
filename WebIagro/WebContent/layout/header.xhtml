@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div style="background-color: #598294; padding: 12px">
+		<img src="layout/utec.jpg" width="100px" align="bottom"/>
+		<span
+			style="color: white; font-size: 180%; font-family: Trebuchet MS; margin: 20px; text-shadow: black 0.1em 0.1em 0.2em">
+			Sistema de Gestion IAGRO</span>
+	</div>
+
+	<h:form>
+		<p:growl id="messages" />
+		<p:menubar>
+
+			<p:submenu label="Usuarios" rendered="#{loginUsuario.esAdm()}">
+				<p:menuitem value="Listado de Usuarios"
+					outcome="/listadoUsuarios.xhtml" />
+				<p:menuitem value="Alta de usuario" outcome="/altaUsuario.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Formularios" rendered="#{loginUsuario.logeado()}">
+				<p:menuitem value="Alta" rendered="#{loginUsuario.esExpOAdm()}" outcome="/crearFormulario.xhtml"/>
+<!-- 				<p:menuitem value="Baja" rendered="#{loginUsuario.esExpOAdm()}" /> -->
+<!-- 				<p:menuitem value="Modificar" rendered="#{loginUsuario.esExpOAdm()}" /> -->
+				<p:menuitem value="Listado" rendered="#{loginUsuario.logeado()}" outcome="/listadoFormularios.xhtml"/>
+			</p:submenu>
+
+<!-- 			<p:submenu label="Casillas" rendered="#{loginUsuario.esExpOAdm()}"> -->
+<!-- 				<p:menuitem value="Alta" outcome="/crearCasilla.xhtml" /> -->
+<!-- 				<p:menuitem value="Baja" /> -->
+<!-- 				<p:menuitem value="Modificar" /> -->
+<!-- 				<p:menuitem value="Agregar a formulario" /> -->
+<!-- 			</p:submenu> -->
+
+			<p:submenu label="Actividad de campo" rendered="#{loginUsuario.logeado()}">
+				<p:menuitem value="Cargar" rendered="#{loginUsuario.logeado()}" outcome="/crearActividad.xhtml"/>
+<!-- 				<p:menuitem value="Eliminar" rendered="#{loginUsuario.esExpOAdm()}" /> -->
+<!-- 				<p:menuitem value="Modificar" rendered="#{loginUsuario.logeado()}" /> -->
+				<p:menuitem value="Listar" rendered="#{loginUsuario.logeado()}"  outcome="/listadoActividades.xhtml"/>
+<!-- 				<p:menuitem value="Listar en rango de fechas" -->
+<!-- 					rendered="#{loginUsuario.esExpOAdm()}" /> -->
+				<p:menuitem value="Listar segun metodo de muestreo"
+					rendered="#{loginUsuario.esExpOAdm()}" outcome="/listAxM.xhtml"/>
+				<p:menuitem value="Listar segun estacion de muestreo"
+					rendered="#{loginUsuario.esExpOAdm()}" outcome="/listAxE.xhtml"/>
+<!-- 				<p:menuitem value="Listar por cada usuario experto" -->
+<!-- 					rendered="#{loginUsuario.esExpOAdm()}" /> -->
+				<p:menuitem value="Listar por Departamento"
+					rendered="#{loginUsuario.esExpOAdm()}" outcome="/listAxD.xhtml"/>
+			</p:submenu>
+
+
+			<f:facet name="options">
+				<h:outputText value="Usuario: " rendered="#{loginUsuario.logeado()}"/>
+				<h:outputText value="#{loginUsuario.usuLogeado.nombUsuario}" />
+				<h:form rendered="#{loginUsuario.logeado()}">
+					<h:commandButton id="agregar" value="Logout"
+						action="#{loginUsuario.logout()}" />
+				</h:form>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+</ui:composition>

@@ -7,9 +7,9 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import com.daos.UsuarioDAO;
+import com.entities.Administrador;
 import com.entities.Usuario;
 import com.exception.ServiciosException;
-
 @Local
 @Stateless
 public class UsuarioBean {
