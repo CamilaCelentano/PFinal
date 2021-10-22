@@ -28,7 +28,20 @@
 					<f:facet name="header">Resumen</f:facet>
 					<h:outputText value="#{u.resumen}" />
 				</p:column>
-				
+				<p:column>
+					<f:facet name="header">Casillas</f:facet>
+					<h:outputText value="#{u.casilla}" />
+				</p:column>
+				<p:column>
+					<h:commandButton action="#{asignarCasilla.seleccionarModificar(u)}"
+						value="Asignar" class="btn btn-primary">
+					</h:commandButton>
+				</p:column>
+				<p:column>
+					<h:commandButton action="#{crearActividad.seleccionarCargar(u)}"
+						value="Carga Actividad" class="btn btn-primary">
+					</h:commandButton>
+				</p:column>
 				<p:column>
 					<f:facet name="header">Eliminar</f:facet>
 					<h:commandButton action="#{eliminarUsuario.eliminarUsuario(u)}"

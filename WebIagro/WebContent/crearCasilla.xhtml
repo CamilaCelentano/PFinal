@@ -4,7 +4,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 	<ui:define name="title">
 		<c:set var="title" value="Alta Casilla" scope="request" />
@@ -12,37 +14,44 @@
 
 	<ui:define name="content">
 		<h:form>
-			<p:panelGrid columns="5">
+			<p:panelGrid columns="3">
 			<p:outputLabel value="Parámetro:" />
 				<p:inputText id="parametro" name="parametro"
-					value="#{crearCasilla.casilla.parametro}" label="Parametro" />
+					value="#{crearCasilla.cas.parametro}" label="Parametro" />
 				<p:message for="parametro" style="color:red" />
 
 				<p:outputLabel value="Descripción:" />
 				<p:inputText id="descripcion" name="descripcion"
-					value="#{crearCasilla.casilla.descripcion}"
+					value="#{crearCasilla.cas.descripcion}"
 					label="Descripcion" />
 				<p:message for="descripcion" style="color:red" />
 				
+<!-- 				<p:outputLabel value="Obligatorio:" /> -->
+<!-- 				<p:inputText id="obligatorio" name="obligatorio" -->
+<!-- 					value="#{crearCasilla.cas.obligatorio}" -->
+<!-- 					label="Obligatorio" /> -->
+<!-- 				<p:message for="obligatorio" style="color:red" /> -->
 				<p:outputLabel value="Obligatorio:" />
-				<p:inputText id="obligatorio" name="obligatorio"
-					value="#{crearCasilla.casilla.obligatorio}"
-					label="Obligatorio" />
-				<p:message for="obligatorio" style="color:red" />
-				
-<!-- 				<p:outputLabel value="Tipo de valor:" /> -->
-<!-- 				<p:selectOneMenu value="#{crearCasilla.tipovalor}"> -->
-<!-- 				<f:selectItem itemValue="#{crearCasilla.tipovalor.}" itemLabel="Administrador" /> -->
-<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
-<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
-<!-- 				<f:selectItem itemValue="Administrador" itemLabel="Administrador" /> -->
-<!-- 						</p:selectOneMenu> -->
-						
-				<p:outputLabel value="Unidad de Medida:" />
-				<p:selectOneMenu value="#{crearCasilla.mostrarUnidades()}">
-				<f:selectItem itemValue="#{crearCasilla.uniMedidaBean.buscarPorNombre('cm')}" itemLabel="Cm" />
-						</p:selectOneMenu>
+				<p:selectOneRadio  value="#{crearCasilla.cas.obligatorio}" unselectable="true">
+           		<f:selectItem itemLabel="Si" itemValue="true"/>
+            	<f:selectItem itemLabel="No" itemValue="false"/>
+        		</p:selectOneRadio>
 				</p:panelGrid>
+				
+				<p:panelGrid columns="2">
+				
+				<p:outputLabel value="Tipo de Valor:" />
+				<p:selectOneMenu id="tipo" value="#{crearCasilla.cas.tipoValor}">
+  			<!-- use property name not method name -->
+ 				 <f:selectItems value="#{crearCasilla.tipoValor}" />
+				</p:selectOneMenu>
+						
+			<p:outputLabel value="Unidad de Medida:" />
+			<p:selectOneMenu value="#{crearCasilla.cas.unidadMedida}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{crearCasilla.mostrarUnidades()}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}"/>
+            </p:selectOneMenu>
+				</p:panelGrid>
+				
 			<h:commandButton id="crear" value="Crear"
 				action="#{crearCasilla.crearCasilla()}" />
 		</h:form>

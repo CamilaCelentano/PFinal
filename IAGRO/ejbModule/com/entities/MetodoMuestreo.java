@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,6 +45,31 @@ public class MetodoMuestreo implements Serializable {
 
 	@Override
 	public String toString() {
-		return nombre;
+		StringBuilder builder = new StringBuilder();
+		builder.append("MetodoMuestreo [idMetodoMuestreo=");
+		builder.append(idMetodoMuestreo);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idMetodoMuestreo, nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MetodoMuestreo other = (MetodoMuestreo) obj;
+		return Objects.equals(idMetodoMuestreo, other.idMetodoMuestreo) && Objects.equals(nombre, other.nombre);
+	}
+	
+	
 }
