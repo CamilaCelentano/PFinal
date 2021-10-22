@@ -28,15 +28,15 @@
 				<p:menuitem value="Listado" rendered="#{loginUsuario.logeado()}" outcome="/listadoFormularios.xhtml"/>
 			</p:submenu>
 
-<!-- 			<p:submenu label="Casillas" rendered="#{loginUsuario.esExpOAdm()}"> -->
-<!-- 				<p:menuitem value="Alta" outcome="/crearCasilla.xhtml" /> -->
+			<p:submenu label="Casillas" rendered="#{loginUsuario.esExpOAdm()}">
+				<p:menuitem value="Alta" outcome="/crearCasilla.xhtml" />
 <!-- 				<p:menuitem value="Baja" /> -->
 <!-- 				<p:menuitem value="Modificar" /> -->
 <!-- 				<p:menuitem value="Agregar a formulario" /> -->
-<!-- 			</p:submenu> -->
+			</p:submenu>
 
 			<p:submenu label="Actividad de campo" rendered="#{loginUsuario.logeado()}">
-				<p:menuitem value="Cargar" rendered="#{loginUsuario.logeado()}" outcome="/crearActividad.xhtml"/>
+<!-- 				<p:menuitem value="Cargar" rendered="#{loginUsuario.logeado()}" outcome="/crearActividad.xhtml"/> -->
 <!-- 				<p:menuitem value="Eliminar" rendered="#{loginUsuario.esExpOAdm()}" /> -->
 <!-- 				<p:menuitem value="Modificar" rendered="#{loginUsuario.logeado()}" /> -->
 				<p:menuitem value="Listar" rendered="#{loginUsuario.logeado()}"  outcome="/listadoActividades.xhtml"/>

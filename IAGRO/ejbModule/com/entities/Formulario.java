@@ -3,6 +3,7 @@ package com.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -77,4 +78,40 @@ public class Formulario implements Serializable {
 		this.nombre = nombre;
 		this.casilla = casilla;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(casilla, idFormulario, nombre, resumen);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Formulario other = (Formulario) obj;
+		return Objects.equals(casilla, other.casilla) && Objects.equals(idFormulario, other.idFormulario)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(resumen, other.resumen);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Formulario [idFormulario=");
+		builder.append(idFormulario);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", resumen=");
+		builder.append(resumen);
+		builder.append(", casilla=");
+		builder.append(casilla);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
+	
 }

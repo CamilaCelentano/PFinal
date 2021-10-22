@@ -1,5 +1,6 @@
 package com.servicios;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -45,19 +46,11 @@ public class ActividadCampoBean{
 //		return actividadcampo.buscarPorNombre(nom);
 //	}
 
-//	@Override
-//	public ActividadCampo buscarPorForm(String form) {
-//		// TODO Auto-generated method stub
-////		return actividadcampo.buscarPorForm(form);
-//		return null;
-//	}
-//
-//	@Override
-//	public ActividadCampo buscarPorFecha(String fecha) {
-//		// TODO Auto-generated method stub
-//		return actividadcampo.buscarPorFecha(fecha);
-//	}
-//
+	public List<ActividadCampo> buscarPorFecha(Date fecha, Date fecha1) {
+		// TODO Auto-generated method stub
+		return actividadcampo.buscarPorFecha(fecha, fecha1);
+	}
+
 //	@Override
 //	public ActividadCampo buscarPorMetM(String metM) {
 //		// TODO Auto-generated method stub

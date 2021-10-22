@@ -1,5 +1,6 @@
 package com.daos;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -79,15 +80,11 @@ public class ActividadCampoDAO {
 //		}
 //	}
 
-	public ActividadCampo buscarPorFecha(String fecha) {
+	public List<ActividadCampo> buscarPorFecha(Date fecha, Date fecha1) {
 		TypedQuery<ActividadCampo> query = em
-				.createQuery("SELECT a FROM ActividadCampo a WHERE a.fecha = :fecha", ActividadCampo.class)
-				.setParameter("fecha", fecha);
-		if (query.getResultList().size() == 1) {
-			return query.getResultList().get(0);
-		} else {
-			return null;
-		}
+				.createQuery("SELECT a FROM ActividadCampo a WHERE a.fecha >= :fecha AND a.fecha <= :fecha1", ActividadCampo.class)
+				.setParameter("fecha", fecha).setParameter("fecha1", fecha1);
+		return query.getResultList();
 	}
 
 //	public ActividadCampo buscarPorMetM(String metM) {

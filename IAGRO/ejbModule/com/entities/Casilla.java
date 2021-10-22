@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -104,4 +105,24 @@ public class Casilla implements Serializable {
 				+ ", unidadMedida=" + unidadMedida + ", obligatorio=" + obligatorio + ", tipoValor=" + tipoValor + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, idCasilla, obligatorio, parametro, tipoValor, unidadMedida);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Casilla other = (Casilla) obj;
+		return Objects.equals(descripcion, other.descripcion) && Objects.equals(idCasilla, other.idCasilla)
+				&& obligatorio == other.obligatorio && Objects.equals(parametro, other.parametro)
+				&& tipoValor == other.tipoValor && Objects.equals(unidadMedida, other.unidadMedida);
+	}
+
+	
 }

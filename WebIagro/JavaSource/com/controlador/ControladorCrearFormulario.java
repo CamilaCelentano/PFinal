@@ -10,7 +10,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import com.entities.Administrador;
+import com.entities.Casilla;
+import com.entities.Comun;
+import com.entities.Experto;
 import com.entities.Formulario;
+import com.entities.Usuario;
 import com.exception.ServiciosException;
 import com.servicios.FormularioBean;
 
@@ -41,6 +46,12 @@ public class ControladorCrearFormulario implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public String seleccionarModificar(Formulario f) {
+
+		return "asignarCasilla";
+	}
 	public List<Formulario> mostrarUsuarios() {
 		return formBean.obtenerTodos();
 	}
@@ -56,6 +67,7 @@ public class ControladorCrearFormulario implements Serializable{
 	public void setFormBean(FormularioBean formBean) {
 		this.formBean = formBean;
 	}
+	
 
 	
 }

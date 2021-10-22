@@ -33,7 +33,7 @@ public class FormularioRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String crearF(formularioDTO f) {
 		try {
-			formBean.crear(new Formulario(f.getNombre(),f.getResumen(),null));
+			formBean.crear(new Formulario(f.getResumen(),f.getNombre(),null));
 			return "ok";
 		} catch (ServiciosException e) {
 			e.printStackTrace();

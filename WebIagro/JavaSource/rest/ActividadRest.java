@@ -40,7 +40,7 @@ public class ActividadRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String crearA(ActividadCampoDTO a) {
 		try {
-			actBean.crear(new ActividadCampo( a.getDescripcion(),a.getNombre(), a.getFecha(), a.getCantidad(),null, a.getFormulario(), a.getMetMuestreo(), a.getEstacionMuestreo(), a.getGeopunto(),a.getDepartamento()));
+			actBean.crear(new ActividadCampo( a.getDescripcion(),a.getFecha(), a.getNombre(), a.getCantidad(),null, a.getFormulario(), a.getMetMuestreo(), a.getEstacionMuestreo(), a.getGeopunto(),a.getDepartamento()));
 			return "ok";
 		} catch (ServiciosException e) {
 			e.printStackTrace();
