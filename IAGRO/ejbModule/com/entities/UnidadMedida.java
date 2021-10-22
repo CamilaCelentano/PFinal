@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,4 +54,23 @@ public class UnidadMedida implements Serializable {
 	public String toString() {
 		return "UnidadMedida [nombre=" + nombre + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idUnidadMedida, nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UnidadMedida other = (UnidadMedida) obj;
+		return Objects.equals(idUnidadMedida, other.idUnidadMedida) && Objects.equals(nombre, other.nombre);
+	}
+	
+	
 }

@@ -43,8 +43,8 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private Formulario formulario;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	private List<RespuestaCasilla> respuestas;
+//	@OneToMany(fetch = FetchType.LAZY)
+//	private List<RespuestaCasilla> respuestas;
 
 	@ManyToOne
 	private MetodoMuestreo metMuestreo;
@@ -52,7 +52,7 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private EstacionMuestreo estacionMuestreo;
 
-	@ManyToOne(optional = true, cascade = CascadeType.MERGE)
+	@ManyToOne(optional = true)
 	private Geopunto geopunto;
 
 	@ManyToOne
@@ -146,19 +146,16 @@ public class ActividadCampo implements Serializable {
 		this.estacionMuestreo = estacionMuestreo;
 	}
 
-	public List<RespuestaCasilla> getRespuestas() {
-		return respuestas;
-	}
+//	public List<RespuestaCasilla> getRespuestas() {
+//		return respuestas;
+//	}
+//
+//	public void setRespuestas(List<RespuestaCasilla> respuestas) {
+//		this.respuestas = respuestas;
+//	}
 
-	public void setRespuestas(List<RespuestaCasilla> respuestas) {
-		this.respuestas = respuestas;
-	}
-
-	public ActividadCampo() {
-		super();
-	}
-
-	public ActividadCampo(String nombre, String descripcion, Date fecha, int cantidad, Usuario usuario,
+	
+	public ActividadCampo(String nombre, Date fecha ,String descripcion, int cantidad, Usuario usuario,
 			Formulario formulario, MetodoMuestreo metMuestreo, EstacionMuestreo estacionMuestreo, Geopunto geopunto,
 			Departamento departamento) {
 		super();
@@ -173,5 +170,40 @@ public class ActividadCampo implements Serializable {
 		this.geopunto = geopunto;
 		this.departamento = departamento;
 	}
+
+	public ActividadCampo() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ActividadCampo [idActividadCampo=");
+		builder.append(idActividadCampo);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", fecha=");
+		builder.append(fecha);
+		builder.append(", cantidad=");
+		builder.append(cantidad);
+		builder.append(", usuario=");
+		builder.append(usuario);
+		builder.append(", formulario=");
+		builder.append(formulario);
+		builder.append(", metMuestreo=");
+		builder.append(metMuestreo);
+		builder.append(", estacionMuestreo=");
+		builder.append(estacionMuestreo);
+		builder.append(", geopunto=");
+		builder.append(geopunto);
+		builder.append(", departamento=");
+		builder.append(departamento);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

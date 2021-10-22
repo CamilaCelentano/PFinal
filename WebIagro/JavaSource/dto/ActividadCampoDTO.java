@@ -1,8 +1,10 @@
 package dto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import com.entities.Departamento;
 import com.entities.EstacionMuestreo;
@@ -11,6 +13,7 @@ import com.entities.Geopunto;
 import com.entities.MetodoMuestreo;
 import com.entities.RespuestaCasilla;
 import com.entities.Usuario;
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ActividadCampoDTO {
@@ -22,7 +25,6 @@ public class ActividadCampoDTO {
 	private int cantidad;
 	private Usuario usuario;
 	private Formulario formulario;
-	private List<RespuestaCasilla> respuestas;
 	private MetodoMuestreo metMuestreo;
 	private EstacionMuestreo estacionMuestreo;
 	private Geopunto geopunto;
@@ -69,12 +71,6 @@ public class ActividadCampoDTO {
 	public void setFormulario(Formulario formulario) {
 		this.formulario = formulario;
 	}
-	public List<RespuestaCasilla> getRespuestas() {
-		return respuestas;
-	}
-	public void setRespuestas(List<RespuestaCasilla> respuestas) {
-		this.respuestas = respuestas;
-	}
 	public MetodoMuestreo getMetMuestreo() {
 		return metMuestreo;
 	}
@@ -99,5 +95,37 @@ public class ActividadCampoDTO {
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
+	
+	public ActividadCampoDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(cantidad, departamento, descripcion, estacionMuestreo, fecha, formulario, geopunto,
+				idActividadCampo, metMuestreo, nombre, usuario);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ActividadCampoDTO other = (ActividadCampoDTO) obj;
+		return cantidad == other.cantidad && Objects.equals(departamento, other.departamento)
+				&& Objects.equals(descripcion, other.descripcion)
+				&& Objects.equals(estacionMuestreo, other.estacionMuestreo) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(formulario, other.formulario) && Objects.equals(geopunto, other.geopunto)
+				&& Objects.equals(idActividadCampo, other.idActividadCampo)
+				&& Objects.equals(metMuestreo, other.metMuestreo) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(usuario, other.usuario);
+	}
+	
+	
+	
+	
+	
 	
 }

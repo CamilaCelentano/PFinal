@@ -4,7 +4,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	>
 
 	<ui:define name="title">
 		<c:set var="title" value="Carga de Actividad" scope="request" />
@@ -15,45 +18,56 @@
 			<p:panelGrid columns="3">
 			<p:outputLabel value="Nombre:" />
 				<p:inputText id="nombre" name="nombre"
-					value="#{crearActividad.act.nombre}" required="true" label="Nombre" />
+					value="#{crearActividad.acDTO.nombre}" required="true" label="Nombre" />
 				<p:message for="nombre" style="color:red" />
 				
 				<p:outputLabel value="Descripción:" />
 				<p:inputText id="descripcion" name="descripcion"
-					value="#{crearActividad.act.descripcion}" required="true" label="descripcion" />
+					value="#{crearActividad.acDTO.descripcion}" required="true" label="descripcion" />
 				<p:message for="descripcion" style="color:red" />
 				
-				<p:outputLabel value="Cantidad:" />
-				<p:inputText id="cantidad" name="cantidad"
-					value="#{crearActividad.act.cantidad}" required="true" label="cantidad" />
-				<p:message for="cantidad" style="color:red" />
 				
-				<p:outputLabel for="popup" value="Fecha:"/>
-                <p:calendar id="popup" value="#{crearActividad.act.fecha}"/>
+				<p:outputLabel for="fecha" value="Fecha:"/>
+                <p:calendar id="fecha" value="#{crearActividad.acDTO.fecha}"/>
                 </p:panelGrid>
+                
+                <p:outputLabel value="Cantidad:" />
+				<p:inputText id="cantidad" name="cantidad"
+					value="#{crearActividad.acDTO.cantidad}" required="true" label="Cantidad" />
+				<p:message for="cantidad" style="color:red" />
 
 			<p:panelGrid columns="2">
 			
 			<p:outputLabel value="Departamento:" />
-			<p:selectOneMenu value="#{crearActividad.depDTO.idDepartamento}">
-                <f:selectItems value="#{crearActividad.listadep}" var = "c" itemLabel="#{c.nombre}" itemValue="#{c.idDepartamento}" />
-                <p:ajax event="change" update="@this"/>
+			<p:selectOneMenu  value="#{crearActividad.acDTO.departamento}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{crearActividad.mostrarDep()}" var="c" itemLabel="#{c.nombre}" itemValue="#{c}"/>
             </p:selectOneMenu>
             
             <p:outputLabel value="Método de Muestreo:" />
-			<p:selectOneMenu value="#{crearActividad.metM.nombre}">
-                <f:selectItems value="#{crearActividad.listadomet}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idMetodoMuestreo}"/>
+			<p:selectOneMenu value="#{crearActividad.acDTO.metMuestreo}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{crearActividad.mostrarMet()}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}"/>
             </p:selectOneMenu>
 			
 			 <p:outputLabel value="Estación de Muestreo:" />
-			<p:selectOneMenu value="#{crearActividad.estM.nombre}">
-                <f:selectItems value="#{crearActividad.selectEst()}" />
+			<p:selectOneMenu value="#{crearActividad.acDTO.estacionMuestreo}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{crearActividad.mostrarEst()}" var="e" itemLabel="#{e.nombre}" itemValue="#{e}"/>
             </p:selectOneMenu>
+            
+        	
+        	<p:outputLabel value="Geopunto:" />
+			<p:selectOneMenu value="#{crearActividad.acDTO.geopunto}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{crearActividad.mostrarGeo()}" var="g" itemLabel="#{g.latitud}" itemValue="#{g}"/>
+            </p:selectOneMenu>
+            
+            
+            <p:outputLabel value="Usuario:" />
+			<h:outputText id= "usuario" value="#{loginUsuario.usuLogeado.nombUsuario}" />
+        
         
 			</p:panelGrid>
 			
 			<h:commandButton id="Cargar" value="Cargar"
-				action="#{crearActividad.crearActividad()}" />
+				action="#{crearActividad.crearActividad(crearActividad.acDTO)}" />
 				
 			
 		</h:form>

@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,6 +57,37 @@ public class Geopunto implements Serializable {
 		super();
 		this.latitud = latitud;
 		this.longitud = longitud;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Geopunto [idGeopunto=");
+		builder.append(idGeopunto);
+		builder.append(", latitud=");
+		builder.append(latitud);
+		builder.append(", longitud=");
+		builder.append(longitud);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idGeopunto, latitud, longitud);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Geopunto other = (Geopunto) obj;
+		return Objects.equals(idGeopunto, other.idGeopunto) && Objects.equals(latitud, other.latitud)
+				&& Objects.equals(longitud, other.longitud);
 	}
 
 }

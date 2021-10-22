@@ -73,6 +73,7 @@ public class UsuariosRest {
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String login(Parametros p) {
+		System.out.println(p.getNombUsuario() + p.getPassword());
 		Usuario u = usuBean.buscarPorNombreUsuario(p.getNombre());
 		if (u != null) {
 			if (u.isActivo()) {
@@ -87,6 +88,7 @@ public class UsuariosRest {
 		} else {
 			return "El Usuario no existe.";
 		}
+	
 	}
 	
 	@POST

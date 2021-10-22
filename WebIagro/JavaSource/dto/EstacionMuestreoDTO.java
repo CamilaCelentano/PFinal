@@ -1,6 +1,6 @@
 package dto;
 
-import javax.persistence.Column;
+import java.util.Objects;
 
 public class EstacionMuestreoDTO {
 	private Long idEstacionMuestreo;
@@ -17,5 +17,20 @@ public class EstacionMuestreoDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	@Override
+	public int hashCode() {
+		return Objects.hash(idEstacionMuestreo, nombre);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EstacionMuestreoDTO other = (EstacionMuestreoDTO) obj;
+		return Objects.equals(idEstacionMuestreo, other.idEstacionMuestreo) && Objects.equals(nombre, other.nombre);
+	}
+	
 }
