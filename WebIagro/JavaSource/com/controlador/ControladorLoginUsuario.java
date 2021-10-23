@@ -1,6 +1,7 @@
 package com.controlador;
 
 import java.io.Serializable;
+import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -8,7 +9,16 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.InitialDirContext;
+import javax.naming.directory.SearchControls;
+import javax.naming.directory.SearchResult;
+import javax.naming.ldap.LdapContext;
 
+import com.adconnect.ADConnect;
 import com.entities.Administrador;
 import com.entities.Experto;
 import com.entities.MD5;
@@ -57,6 +67,46 @@ public class ControladorLoginUsuario implements Serializable {
 	@PostConstruct
 	public void init() {
 		usuLogeado = null;
+	}
+
+	public String loginGenerico() {
+		if (usuario.contains("@")) {
+			return loginAD();
+		} else {
+			return login();
+		}
+	}
+
+	public String loginAD() {
+		// obtenemos el dominio en base al email provisto
+		try {
+			LdapContext ctx = ADConnect.getConnection(usuario, contraseña);
+			ADConnect.User userAD = ADConnect.getUser(usuario, ctx);
+
+			if (userAD != null) {
+				FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Usuario encontrado en el AD " + userAD.getUserPrincipal(), "");
+				FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+
+				return "listadoUsuarios.xhtml";		
+				
+			} else {
+				FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario no encontrado en el AD, o contraseña incorrecta",
+						"");
+				FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+	
+			}
+
+			ctx.close();
+
+		} catch (Exception e) {
+			// Failed to authenticate user!
+			System.out.println(e.getMessage());
+			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario no encontrado", "");
+			FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 	public String login() {

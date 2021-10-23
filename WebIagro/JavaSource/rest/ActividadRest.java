@@ -1,6 +1,5 @@
 package rest;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,17 +10,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.entities.ActividadCampo;
-import com.entities.Formulario;
 import com.exception.ServiciosException;
 import com.servicios.ActividadCampoBean;
-import com.servicios.FormularioBean;
-
 import dto.ActividadCampoDTO;
-import dto.DepartamentoDTO;
-import dto.EstacionMuestreoDTO;
-import dto.GeopuntoDTO;
-import dto.MetodoMuestreoDTO;
-import dto.formularioDTO;
 
 @Path("/actividades")
 public class ActividadRest {

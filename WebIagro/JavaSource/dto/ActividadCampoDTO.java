@@ -1,9 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 import com.entities.Departamento;
@@ -11,9 +8,7 @@ import com.entities.EstacionMuestreo;
 import com.entities.Formulario;
 import com.entities.Geopunto;
 import com.entities.MetodoMuestreo;
-import com.entities.RespuestaCasilla;
 import com.entities.Usuario;
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ActividadCampoDTO {
