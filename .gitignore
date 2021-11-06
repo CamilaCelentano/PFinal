@@ -2,3 +2,4 @@
 *.project
 IAGRO/build/classes/META-INF/persistence.xml
 IAGRO/ejbModule/META-INF/persistence.xml
+WebIagro/.classpath
