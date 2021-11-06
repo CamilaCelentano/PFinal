@@ -1,6 +1,5 @@
 package rest;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,22 +10,22 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.entities.ActividadCampo;
-import com.entities.Formulario;
+import com.entities.Departamento;
+import com.entities.EstacionMuestreo;
+import com.entities.MetodoMuestreo;
 import com.exception.ServiciosException;
 import com.servicios.ActividadCampoBean;
-import com.servicios.FormularioBean;
+import com.servicios.DepartamentoBean;
+import com.servicios.EstacionMuestreoBean;
+import com.servicios.MetodoMuestreoBean;
 
 import dto.ActividadCampoDTO;
-import dto.DepartamentoDTO;
-import dto.EstacionMuestreoDTO;
-import dto.GeopuntoDTO;
-import dto.MetodoMuestreoDTO;
-import dto.formularioDTO;
 
 @Path("/actividades")
 public class ActividadRest {
 	@EJB
 	private ActividadCampoBean actBean = new ActividadCampoBean();
+	
 	
 	@GET
 	@Path("/listaActividades")
@@ -35,12 +34,13 @@ public class ActividadRest {
 		return actBean.obtenerTodos();
 	}
 	
+	
 	@POST
 	@Path("/crearA")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String crearA(ActividadCampoDTO a) {
 		try {
-			actBean.crear(new ActividadCampo( a.getDescripcion(),a.getFecha(), a.getNombre(), a.getCantidad(),null, a.getFormulario(), a.getMetMuestreo(), a.getEstacionMuestreo(), a.getGeopunto(),a.getDepartamento()));
+			actBean.crear(new ActividadCampo( a.getDescripcion(),a.getFecha(), a.getNombre(), a.getCantidad(),null, a.getFormulario(), a.getMetMuestreo(), a.getEstacionMuestreo(), null ,a.getDepartamento()));
 			return "ok";
 		} catch (ServiciosException e) {
 			e.printStackTrace();

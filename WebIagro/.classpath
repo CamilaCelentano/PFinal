@@ -12,8 +12,9 @@
 			<attribute name="owner.project.facets" value="jst.jsf;jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/fatim/Desktop/com.fasterxml.jackson.core.jackson-annotations_2.6.2.v20161117-2150.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/IAGRO"/>
-	<classpathentry kind="lib" path="C:/Users/fatim/Downloads/omnifaces-3.11.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/dev/PFinalGit/PFinal/com.fasterxml.jackson.core.jackson-annotations_2.6.2.v20161117-2150.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cami/Downloads/omnifaces-3.11.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cami/Downloads/java-json.jar/java-json.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
