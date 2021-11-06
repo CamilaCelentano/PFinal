@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="WebIagro2">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaSource"/>
+                
         <property name="context-root" value="WebIagro2"/>
+                
         <property name="java-output-path" value="/WebIagro2/WebContent/WEB-INF/classes"/>
+            
     </wb-module>
+    
 </project-modules>
