@@ -10,6 +10,8 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import com.entities.ActividadCampo;
+import com.entities.Casilla;
+import com.entities.MetodoMuestreo;
 import com.exception.ServiciosException;
 
 @Stateless
@@ -82,21 +84,17 @@ public class ActividadCampoDAO {
 
 	public List<ActividadCampo> buscarPorFecha(Date fecha, Date fecha1) {
 		TypedQuery<ActividadCampo> query = em
-				.createQuery("SELECT a FROM ActividadCampo a WHERE a.fecha >= :fecha AND a.fecha <= :fecha1", ActividadCampo.class)
+				.createQuery("SELECT a FROM ActividadCampo a WHERE a.fecha >= :fecha"+" AND a.fecha <= :fecha1", ActividadCampo.class)
 				.setParameter("fecha", fecha).setParameter("fecha1", fecha1);
 		return query.getResultList();
 	}
 
-//	public ActividadCampo buscarPorMetM(String metM) {
-//		TypedQuery<ActividadCampo> query = em
-//				.createQuery("SELECT a FROM ActividadCampo a WHERE a.metodoMuestreo = :metM", ActividadCampo.class)
-//				.setParameter("metodoMuestreo", metM);
-//		if (query.getResultList().size() == 1) {
-//			return query.getResultList().get(0);
-//		} else {
-//			return null;
-//		}
-//	}
+	public List<ActividadCampo> buscarPorMetM(MetodoMuestreo metM) {
+		TypedQuery<ActividadCampo> query = em
+				.createQuery("SELECT a FROM ActividadCampo a WHERE a.metMuestreo = :metM", ActividadCampo.class)
+				.setParameter("metM", metM);
+		return query.getResultList();
+	}
 
 //	public ActividadCampo buscarPorEstM(String estM) {
 //		TypedQuery<ActividadCampo> query = em
@@ -109,15 +107,12 @@ public class ActividadCampoDAO {
 //		}
 //	}
 
-//	public ActividadCampo buscarPorUsuerio(String usuario) {
-//		TypedQuery<ActividadCampo> query = em
-//				.createQuery("SELECT a FROM ActividadCampo a WHERE a.usuario = :usuario", ActividadCampo.class)
-//				.setParameter("usuraio", usuario);
-//		if (query.getResultList().size() == 1) {
-//			return query.getResultList().get(0);
-//		} else {
-//			return null;
-//		}
-//	}
+	public List<ActividadCampo> buscarPorUsuario(String usuario) {
+		TypedQuery<ActividadCampo> query = em
+				.createQuery("SELECT a FROM ActividadCampo a WHERE a.usuario = :usuario", ActividadCampo.class)
+				.setParameter("usuario", usuario);
+		return query.getResultList();
+	}
+	
 
 }

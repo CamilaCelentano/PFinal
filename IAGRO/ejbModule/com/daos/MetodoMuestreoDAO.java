@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import com.entities.EstacionMuestreo;
 import com.entities.MetodoMuestreo;
 import com.exception.ServiciosException;
 
@@ -70,5 +71,16 @@ public class MetodoMuestreoDAO {
 	public List<MetodoMuestreo> obtenerTodos() {
 		TypedQuery<MetodoMuestreo> query = em.createQuery("SELECT a FROM MetodoMuestreo a", MetodoMuestreo.class);
 		return query.getResultList();
+	}
+	
+	public MetodoMuestreo buscarPorId(Long idMuestreo) {
+		TypedQuery<MetodoMuestreo> query = em
+				.createQuery("SELECT a FROM MetodoMuestreo a WHERE a.idMetodoMuestreo = :id", MetodoMuestreo.class)
+				.setParameter("id", idMuestreo);
+		if (query.getResultList().size() == 1) {
+			return query.getResultList().get(0);
+		} else {
+			return null;
+		}
 	}
 }

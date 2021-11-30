@@ -1,6 +1,9 @@
 package dto;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import com.entities.Departamento;
@@ -8,7 +11,9 @@ import com.entities.EstacionMuestreo;
 import com.entities.Formulario;
 import com.entities.Geopunto;
 import com.entities.MetodoMuestreo;
+import com.entities.RespuestaCasilla;
 import com.entities.Usuario;
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ActividadCampoDTO {
@@ -24,6 +29,7 @@ public class ActividadCampoDTO {
 	private EstacionMuestreo estacionMuestreo;
 	private Geopunto geopunto;
 	private Departamento departamento;
+	private List<RespuestaCasilla> respuestas;
 	public Long getIdActividadCampo() {
 		return idActividadCampo;
 	}
@@ -95,10 +101,17 @@ public class ActividadCampoDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public List<RespuestaCasilla> getRespuestas() {
+		return respuestas;
+	}
+	public void setRespuestas(List<RespuestaCasilla> respuestas) {
+		this.respuestas = respuestas;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(cantidad, departamento, descripcion, estacionMuestreo, fecha, formulario, geopunto,
-				idActividadCampo, metMuestreo, nombre, usuario);
+				idActividadCampo, metMuestreo, nombre, respuestas, usuario);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -115,8 +128,26 @@ public class ActividadCampoDTO {
 				&& Objects.equals(formulario, other.formulario) && Objects.equals(geopunto, other.geopunto)
 				&& Objects.equals(idActividadCampo, other.idActividadCampo)
 				&& Objects.equals(metMuestreo, other.metMuestreo) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(usuario, other.usuario);
+				&& Objects.equals(respuestas, other.respuestas) && Objects.equals(usuario, other.usuario);
 	}
+	public ActividadCampoDTO(Long idActividadCampo, String nombre, String descripcion, Date fecha, int cantidad,
+			Usuario usuario, Formulario formulario, MetodoMuestreo metMuestreo, EstacionMuestreo estacionMuestreo,
+			Geopunto geopunto, Departamento departamento, List<RespuestaCasilla> respuestas) {
+		super();
+		this.idActividadCampo = idActividadCampo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.fecha = fecha;
+		this.cantidad = cantidad;
+		this.usuario = usuario;
+		this.formulario = formulario;
+		this.metMuestreo = metMuestreo;
+		this.estacionMuestreo = estacionMuestreo;
+		this.geopunto = geopunto;
+		this.departamento = departamento;
+		this.respuestas = respuestas;
+	}
+	
 	
 	
 	

@@ -23,8 +23,9 @@ public class MetodoMuestreo implements Serializable {
 	@Column(length = 50, nullable = false, unique = true)
 	private String nombre;
 
-	public MetodoMuestreo() {
+	public MetodoMuestreo(Long idMetodoMuestreo) {
 		super();
+		this.idMetodoMuestreo = idMetodoMuestreo;
 	}
 
 	public Long getIdMetodoMuestreo() {
@@ -69,6 +70,11 @@ public class MetodoMuestreo implements Serializable {
 			return false;
 		MetodoMuestreo other = (MetodoMuestreo) obj;
 		return Objects.equals(idMetodoMuestreo, other.idMetodoMuestreo) && Objects.equals(nombre, other.nombre);
+	}
+
+	public MetodoMuestreo() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

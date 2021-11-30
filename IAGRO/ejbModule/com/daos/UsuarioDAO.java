@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import com.entities.EstacionMuestreo;
 import com.entities.Usuario;
 import com.exception.ServiciosException;
 
@@ -72,6 +73,17 @@ public class UsuarioDAO {
 	public Usuario buscarPorMail(String email) {
 		TypedQuery<Usuario> query = em.createQuery("SELECT a FROM Usuario a WHERE a.email = :email", Usuario.class)
 				.setParameter("email", email);
+		if (query.getResultList().size() == 1) {
+			return query.getResultList().get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	public Usuario buscarPorId(Long idUsuario) {
+		TypedQuery<Usuario> query = em
+				.createQuery("SELECT a FROM Usuario a WHERE a.idUsuario = :id", Usuario.class)
+				.setParameter("id", idUsuario);
 		if (query.getResultList().size() == 1) {
 			return query.getResultList().get(0);
 		} else {

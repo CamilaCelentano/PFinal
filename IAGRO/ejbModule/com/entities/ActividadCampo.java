@@ -3,6 +3,7 @@ package com.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class ActividadCampo implements Serializable {
@@ -43,8 +48,9 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private Formulario formulario;
 
-//	@OneToMany(fetch = FetchType.LAZY)
-//	private List<RespuestaCasilla> respuestas;
+	@OneToMany(fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)//Agregue este para que haga bien el deploy por cambiar lazy por eager
+	private List<RespuestaCasilla> respuestas;
 
 	@ManyToOne
 	private MetodoMuestreo metMuestreo;
@@ -52,8 +58,8 @@ public class ActividadCampo implements Serializable {
 	@ManyToOne
 	private EstacionMuestreo estacionMuestreo;
 
-	@ManyToOne(optional = true)
-	private Geopunto geopunto;
+//	@ManyToOne(optional = true)
+//	private Geopunto geopunto;
 
 	@ManyToOne
 	private Departamento departamento;
@@ -78,13 +84,13 @@ public class ActividadCampo implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Geopunto getGeopunto() {
-		return geopunto;
-	}
-
-	public void setGeopunto(Geopunto geopunto) {
-		this.geopunto = geopunto;
-	}
+//	public Geopunto getGeopunto() {
+//		return geopunto;
+//	}
+//
+//	public void setGeopunto(Geopunto geopunto) {
+//		this.geopunto = geopunto;
+//	}
 
 	public void setIdActividadCampo(Long idActividadCampo) {
 		this.idActividadCampo = idActividadCampo;
@@ -146,17 +152,41 @@ public class ActividadCampo implements Serializable {
 		this.estacionMuestreo = estacionMuestreo;
 	}
 
-//	public List<RespuestaCasilla> getRespuestas() {
-//		return respuestas;
-//	}
-//
-//	public void setRespuestas(List<RespuestaCasilla> respuestas) {
-//		this.respuestas = respuestas;
-//	}
+	public List<RespuestaCasilla> getRespuestas() {
+		return respuestas;
+	}
+
+	public void setRespuestas(List<RespuestaCasilla> respuestas) {
+		this.respuestas = respuestas;
+	}
 
 	
-	public ActividadCampo(String nombre, Date fecha ,String descripcion, int cantidad, Usuario usuario,
-			Formulario formulario, MetodoMuestreo metMuestreo, EstacionMuestreo estacionMuestreo, Geopunto geopunto,
+	
+//	public ActividadCampo(String nombre, String descripcion, Date fecha, int cantidad,
+//			Usuario usuario, Formulario formulario, List<RespuestaCasilla> respuestas, MetodoMuestreo metMuestreo,
+//			EstacionMuestreo estacionMuestreo, Departamento departamento) {
+//		super();
+//		this.nombre = nombre;
+//		this.descripcion = descripcion;
+//		this.fecha = fecha;
+//		this.cantidad = cantidad;
+//		this.usuario = usuario;
+//		this.formulario = formulario;
+//		this.respuestas = respuestas;
+//		this.metMuestreo = metMuestreo;
+//		this.estacionMuestreo = estacionMuestreo;
+//		this.departamento = departamento;
+//	}
+
+
+
+	public ActividadCampo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ActividadCampo(String nombre, String descripcion, Date fecha, int cantidad, Usuario usuario,
+			Formulario formulario, MetodoMuestreo metMuestreo, EstacionMuestreo estacionMuestreo,
 			Departamento departamento) {
 		super();
 		this.nombre = nombre;
@@ -167,12 +197,7 @@ public class ActividadCampo implements Serializable {
 		this.formulario = formulario;
 		this.metMuestreo = metMuestreo;
 		this.estacionMuestreo = estacionMuestreo;
-		this.geopunto = geopunto;
 		this.departamento = departamento;
-	}
-
-	public ActividadCampo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -192,17 +217,45 @@ public class ActividadCampo implements Serializable {
 		builder.append(usuario);
 		builder.append(", formulario=");
 		builder.append(formulario);
+		builder.append(", respuestas=");
+		builder.append(respuestas);
 		builder.append(", metMuestreo=");
 		builder.append(metMuestreo);
 		builder.append(", estacionMuestreo=");
 		builder.append(estacionMuestreo);
-		builder.append(", geopunto=");
-		builder.append(geopunto);
 		builder.append(", departamento=");
 		builder.append(departamento);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cantidad, departamento, descripcion, estacionMuestreo, fecha, formulario, idActividadCampo,
+				metMuestreo, nombre, respuestas, usuario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ActividadCampo other = (ActividadCampo) obj;
+		return cantidad == other.cantidad && Objects.equals(departamento, other.departamento)
+				&& Objects.equals(descripcion, other.descripcion)
+				&& Objects.equals(estacionMuestreo, other.estacionMuestreo) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(formulario, other.formulario)
+				&& Objects.equals(idActividadCampo, other.idActividadCampo)
+				&& Objects.equals(metMuestreo, other.metMuestreo) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(respuestas, other.respuestas) && Objects.equals(usuario, other.usuario);
+	}
+
+	
+	
+	
 	
 	
 

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import com.entities.Casilla;
+import com.entities.EstacionMuestreo;
 import com.entities.Formulario;
 import com.exception.ServiciosException;
 
@@ -94,7 +95,16 @@ public class FormularioDAO {
 			throw new ServiciosException("No se pudo borrar la casilla.");
 		}
 	}
-	
+	public Formulario buscarPorId(Long idFormulario) {
+		TypedQuery<Formulario> query = em
+				.createQuery("SELECT a FROM Formulario a WHERE a.idFormulario = :id", Formulario.class)
+				.setParameter("id", idFormulario);
+		if (query.getResultList().size() == 1) {
+			return query.getResultList().get(0);
+		} else {
+			return null;
+		}
+	}
 	
 
 }

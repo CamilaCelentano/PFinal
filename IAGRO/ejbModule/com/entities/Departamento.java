@@ -23,8 +23,9 @@ public class Departamento implements Serializable {
 	@Column(length = 50, nullable = false, unique = true)
 	private String nombre;
 
-	public Departamento() {
+	public Departamento(Long idDepartamento) {
 		super();
+		this.idDepartamento = idDepartamento;
 	}
 
 	public Long getIdDepartamento() {
@@ -69,6 +70,11 @@ public class Departamento implements Serializable {
 			return false;
 		Departamento other = (Departamento) obj;
 		return Objects.equals(idDepartamento, other.idDepartamento) && Objects.equals(nombre, other.nombre);
+	}
+
+	public Departamento() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 

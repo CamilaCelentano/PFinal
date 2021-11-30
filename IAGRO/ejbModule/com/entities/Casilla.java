@@ -99,10 +99,15 @@ public class Casilla implements Serializable {
 		this.tipoValor = tipoValor;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Casilla [idCasilla=" + idCasilla + ", parametro=" + parametro + ", descripcion=" + descripcion
-				+ ", unidadMedida=" + unidadMedida + ", obligatorio=" + obligatorio + ", tipoValor=" + tipoValor + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Casilla [Parametro=");
+		builder.append(parametro);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override

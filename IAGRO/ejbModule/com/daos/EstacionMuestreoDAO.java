@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import com.entities.Departamento;
 import com.entities.EstacionMuestreo;
 import com.exception.ServiciosException;
 
@@ -64,6 +65,17 @@ public class EstacionMuestreoDAO {
 		TypedQuery<EstacionMuestreo> query = em
 				.createQuery("SELECT a FROM EstacionMuestreo a WHERE a.nombre = :nom", EstacionMuestreo.class)
 				.setParameter("nom", nom);
+		if (query.getResultList().size() == 1) {
+			return query.getResultList().get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	public EstacionMuestreo buscarPorId(Long idEstacion) {
+		TypedQuery<EstacionMuestreo> query = em
+				.createQuery("SELECT a FROM EstacionMuestreo a WHERE a.idEstacionMuestreo = :id", EstacionMuestreo.class)
+				.setParameter("id", idEstacion);
 		if (query.getResultList().size() == 1) {
 			return query.getResultList().get(0);
 		} else {

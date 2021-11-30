@@ -11,7 +11,12 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.entities.ActividadCampo;
+import com.entities.Administrador;
+import com.entities.Departamento;
+import com.entities.Experto;
 import com.entities.Formulario;
+import com.entities.MetodoMuestreo;
+import com.entities.Usuario;
 import com.servicios.ActividadCampoBean;
 
 @Named(value = "filtro") // JEE8
@@ -25,6 +30,19 @@ public class ControladorFiltro implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Date fecha1;
 	private Date fecha2;
+	private String usuario;
+	private MetodoMuestreo meM = new MetodoMuestreo();
+	private Usuario usu;
+	private Experto exp = new Experto();
+	private List<String> lista;
+	
+	
+	public List<String> listado() {
+		lista.add("Experto");
+		lista.add("Administrador");
+		lista.add("Comun");
+		return lista;
+	}
 	@EJB
 	ActividadCampoBean act = new ActividadCampoBean();
 	public List<ActividadCampo> mostrarActv() {
@@ -46,6 +64,17 @@ public class ControladorFiltro implements Serializable{
 			}
 		}
 		return ret;
+	}
+	public List<ActividadCampo> filtro(Date a, Date b){
+		return act.buscarPorFecha(a, b);
+	}
+
+	public boolean esExp() {
+		if (usu instanceof Experto || usu instanceof Administrador) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	public Date getFecha1() {
 		return fecha1;
@@ -70,6 +99,57 @@ public class ControladorFiltro implements Serializable{
 	}
 	public void setRet(List<ActividadCampo> ret) {
 		this.ret = ret;
+	}
+
+	public MetodoMuestreo getMeM() {
+		return meM;
+	}
+
+	public void setMeM(MetodoMuestreo meM) {
+		this.meM = meM;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String tipoUsu(Usuario u) {
+		if (u instanceof Experto){
+			return tipoUsuario = "Experto";
+		} else if (u instanceof Administrador){
+			return tipoUsuario = "Administrador";
+		}else {
+			return tipoUsuario = "Comun";
+		}
+	}
+	
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	private String tipoUsuario;
+
+	public Usuario getUsu() {
+		return usu;
+	}
+
+	public void setUsu(Usuario usu) {
+		this.usu = usu;
+	}
+
+	public List<String> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<String> lista) {
+		this.lista = lista;
 	}
 	
 
