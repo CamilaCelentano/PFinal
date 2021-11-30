@@ -151,6 +151,8 @@ public abstract class Usuario implements Serializable {
 				&& Objects.equals(idUsuario, other.idUsuario) && Objects.equals(nombUsuario, other.nombUsuario)
 				&& Objects.equals(nombre, other.nombre);
 	}
+
+
 	
 	
 

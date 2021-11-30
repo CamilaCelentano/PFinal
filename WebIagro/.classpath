@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="C:/dev/PFinalGit/PFinal/com.fasterxml.jackson.core.jackson-annotations_2.6.2.v20161117-2150.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cami/Downloads/omnifaces-3.11.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cami/Downloads/java-json.jar/java-json.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cami/wildfly-cami/bin/client/jboss-client.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cami/wildfly-23.0.2.Final/modules/system/layers/base/javax/ws/rs/api/main/jboss-jaxrs-api_2.1_spec-2.0.1.Final.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

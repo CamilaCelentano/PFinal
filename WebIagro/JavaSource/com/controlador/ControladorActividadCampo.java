@@ -85,7 +85,7 @@ public class ControladorActividadCampo implements Serializable{
 	public void crearActividad(ActividadCampoDTO actDTO){
 		ControladorLoginUsuario ctlL = new ControladorLoginUsuario();
 		try {
-			actBean.crear(new ActividadCampo(actDTO.getNombre(),actDTO.getFecha(), actDTO.getDescripcion(), actDTO.getCantidad(), ctlL.getUsuLogeado(), actDTO.getFormulario(), actDTO.getMetMuestreo(), actDTO.getEstacionMuestreo(), actDTO.getGeopunto(), actDTO.getDepartamento()));
+			actBean.crear(new ActividadCampo(actDTO.getNombre(),actDTO.getDescripcion(), actDTO.getFecha(), actDTO.getCantidad(), ctlL.getUsuLogeado(), actDTO.getFormulario(), actDTO.getRespuestas(),actDTO.getMetMuestreo(), actDTO.getEstacionMuestreo(), actDTO.getGeopunto(), actDTO.getDepartamento()));
 			FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Actividad de campo creada correctamente.",
 					"");
 			FacesContext.getCurrentInstance().addMessage(null, facesMsg);

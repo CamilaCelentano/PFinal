@@ -24,8 +24,9 @@ public class EstacionMuestreo implements Serializable {
 
 	private String nombre;
 
-	public EstacionMuestreo() {
+	public EstacionMuestreo(Long idEstacionMuestreo) {
 		super();
+		this.idEstacionMuestreo = idEstacionMuestreo;
 	}
 
 	public Long getIdEstacionMuestreo() {
@@ -72,5 +73,11 @@ public class EstacionMuestreo implements Serializable {
 		EstacionMuestreo other = (EstacionMuestreo) obj;
 		return Objects.equals(idEstacionMuestreo, other.idEstacionMuestreo) && Objects.equals(nombre, other.nombre);
 	}
+
+	public EstacionMuestreo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 
 }

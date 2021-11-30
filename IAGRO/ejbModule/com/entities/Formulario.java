@@ -32,8 +32,9 @@ public class Formulario implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Casilla> casilla = new ArrayList<>();
 
-	public Formulario() {
+	public Formulario(Long idFormulario) {
 		super();
+		this.idFormulario = idFormulario;
 	}
 
 	public Long getIdFormulario() {
@@ -110,6 +111,11 @@ public class Formulario implements Serializable {
 		builder.append(casilla);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public Formulario() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	

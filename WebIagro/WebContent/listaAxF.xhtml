@@ -23,8 +23,8 @@
 				action="#{filtro.filtroFecha(filtro.fecha1,filtro.fecha2)}" />
 			</p:panelGrid>
 			<p:dataTable binding="#{table}" id="dataTableId"
-				value="#{filtro.filtroFecha()}" var="u"
-				class="table table-striped table-hover table-bordered">
+				value="#{filtro.filtro(filtro.fecha1,filtro.fecha2)}" var="u"
+				class="table table-striped table-hover table-bordered" emptyMessage="No se han encontrado coincidencias">
 				
 			
 				<p:column>

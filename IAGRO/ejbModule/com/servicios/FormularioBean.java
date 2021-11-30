@@ -38,6 +38,10 @@ public class FormularioBean {
 	public Formulario buscar(String nom) {
 		return formulario.buscar(nom);
 	}
+	
+	public Formulario buscarPorId(Long id) {
+		return formulario.buscarPorId(id);
+	}
 
 	public void asignarCasilla(Long idFormulario, Long idCasilla) throws ServiciosException {
 		formulario.asignarCasilla(idFormulario, idCasilla);

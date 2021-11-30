@@ -73,7 +73,7 @@ public class DepartamentoDAO {
 	}
 	public Departamento buscarPorId(Long idDepartamento) {
 		TypedQuery<Departamento> query = em
-				.createQuery("SELECT a FROM Administrador a WHERE a.idDepartamento = :id", Departamento.class)
+				.createQuery("SELECT a FROM Departamento a WHERE a.idDepartamento = :id", Departamento.class)
 				.setParameter("id", idDepartamento);
 		if (query.getResultList().size() == 1) {
 			return query.getResultList().get(0);
@@ -81,5 +81,6 @@ public class DepartamentoDAO {
 			return null;
 		}
 	}
+	
 
 }
